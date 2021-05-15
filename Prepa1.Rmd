@@ -12,7 +12,6 @@ knitr::opts_chunk$set(echo = TRUE, include = TRUE)
 ```
 
 ## Por que R?
-
 ![R es fino](img/al_principio_pero_ahora.png)
 
 \newpage
@@ -258,4 +257,9 @@ books[books$Days  < 30 | books$Sales > 0  ,]
 
 
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.7
+
+
+
+## Referencias
+ 1. https://learningstatisticswithr.com/lsr-0.6.pdf - Danielle Navarro 
+2. Imagenes e Ilustraciones de Allison Horst - https://github.com/allisonhorst/stats-illustrations
