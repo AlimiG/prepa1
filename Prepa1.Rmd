@@ -3,8 +3,8 @@ title: 'Prepa 1 - Introduccion a R '
 author: "Alimi Garmendia"
 date: "5/14/2021"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
