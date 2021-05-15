@@ -1,0 +1,150 @@
+---
+title: 'Prepa 1 - Introduccion a R '
+author: "Alimi Garmendia"
+date: "5/14/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, include = TRUE)
+```
+
+## Por que R?
+
+![R es fino](img/al_principio_pero_ahora.png)
+
+\newpage
+
+## Operaciones basicas 
+```{r operaciones basicas, include=TRUE}
+# Operaciones aritmeticas basicas
+10+10 # Suma y resta
+5*5*5 # Potenciacion y raices
+5^2
+2^(1/2)
+sqrt(2)
+
+# Orden de operaciones es  */^ luego +-
+2+5*3
+
+
+# R es pana y sabe cuando no haz terminado (En la consola)
+# 10 + 
+
+```
+## Asignar Variables
+
+Podemos asignar variables usando <- , -> o = . Aunque lo acostumbrado es usar <- y -> para asignar variables y funciones y = para parametros y valores de las funciones
+```{r pressure}
+a <- 5
+a
+
+5*10+3/5 -> b
+b
+
+a = 4
+a
+
+```
+
+Ahora es posible realizar operaciones con las variables creadas
+
+```{r}
+a * b
+a+b
+a/b
+```
+
+Al momento de nombrar variables, es util usar nombres representativos que ayuden a entender que esta guardando dicha variable. Por ejemplo media, valorAbsoluto. Cosas como a, b, x pueden llegar a hacer que nos perdamos cuando estemos revisando nuestro codigo. RECOMENDACION = usarCamelCase
+
+
+## FUN with functions
+
+Para crear una funcion usamos la siguiente plantilla
+```{r}
+a <- function(x,y = 7){
+  x * 7 + y #podemos usar return, pero no es mucha la diferencia
+}
+a(3)
+a(3,5)
+a(x= 2, y = 2)
+```
+Cuando tengamos parametros por default estos deben estar lo mas a la derecha posible (y en el ejemplo anterior). RECOMENDACION = UsarCamelCase
+
+Si hay alguna funcion de R y queremos indagar sobre que parametros admite, o que hace podemos usar
+
+```{r}
+?round
+
+round(3.1416, 2)
+```
+
+Asi podemos acceder rapidamente a la documentacion. La documentacion es Buenisima, en ocasiones hasta mejor que google o stack. 
+
+
+## Vectores y el poder de R
+Podemos crear vectores para agrupar nuestros datos, es la estructura fundamental de R y en donde comienzamos a explorar el podeR 
+
+```{r}
+sales.by.month <- c(0, 100, 200, 50, 0, 0, 0, 0, 0, 0, 0, 0)
+
+
+```
+
+Al tener nuestros datos en una sola estructura podemos usar broadcasting u operaciones vectorizadas
+
+```{r}
+sales.by.month * 2
+sales.by.month + 100
+round(sales.by.month + 3.1416, digits = 2)
+sales.by.month /0 #Mosca con una vaina sobrino 
+```
+
+### Sacar informacion de los vectores
+Podemos acceder a los valores de un vector a traves de su indice, MOSCA ES 1-BASED INDEXING
+
+```{r}
+
+sales.by.month[1]
+sales.by.month[1:4]
+sales.by.month[]
+sales.by.month[-2]
+
+sales.by.month[c(1,3,5)]
+
+#Podemos asignarle nombres a las variables
+primerTrimestre <- sales.by.month[1:3]
+names(primerTrimestre) <- c("Enero","Febrero","Marzo")
+
+primerTrimestre['Enero']
+```
+Podemos alterar los valores de los vectores de la misma forma que asignariamos una variable
+
+
+```{r}
+sales.by.month[1] <- 25
+sales.by.month
+```
+Finalmente, podemos obtener informadcion del vector:
+```{r}
+length(sales.by.month)
+max(sales.by.month)
+min(sales.by.month)
+sum(sales.by.month)
+sort(sales.by.month)
+
+
+#Tambien funciona con vectores de characteres
+ months <- c("January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December")
+ 
+ sort(months)
+```
+
+
+
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.7
