@@ -137,13 +137,124 @@ sort(sales.by.month)
 
 
 #Tambien funciona con vectores de characteres
- months <- c("January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December")
+ months.names <- c("January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December")
  
- sort(months)
+ sort(months.names)
+ 
+ names(sales.by.month) <- months.names 
+sales.by.month
 ```
 
 
 
+## Booling
+
+En R podemos usar valores de verdadero  usando TRUE y FALSE. Con ellos podemos usar condicionales, realizar comparaciones  y algunas otras cosa.
+
+```{r}
+5 > 6
+
+5 == 12
+
+5 >= 1
+
+a = 25
+
+if (a > 12) {
+  
+  print("El condicional funciona")
+  
+}
+
+sales.by.month > 12 # Usar comparacion de un vector nos retorna un vector con la comparacion de cada elemento 
+
+```
+
+Podemos usar expresiones mucho mas complejas usando operadores logicos (& | !)
+```{r}
+ !(5 > 3)
+ 5 > 3 | 2 <4
+ 5 > 3 & 2 <4
+ 
+
+
+```
+
+
+ Disclaimer! OJO con usar T o F
+ 
+```{r}
+T
+
+F
+```
+Aunque funcionan y es muy usado en argumentos de funciones hay que tener cuidado, pues tanto T como F pueden cambiarles su valor al asignarle un nuevo valor
+
+```{r}
+T <- 7
+
+T
+
+```
+
+Como vimos en ejemplos anteriores podemos obtener un vector de booleanos al realizar comparaciones usando un vector. Esto nos puede ayudar a filtrar datos
+
+```{r}
+sales.by.month > 20 # Esto nos dira cuales meses tuvieron un valor  mayor a 20
+
+# Ahora podemos filtrar cuales meses cumplen esa condicion
+
+sales.by.month[sales.by.month > 20] 
+
+```
+
+
+## Leer de archivos
+
+Durante el curso estaremos trabajando con datos almacenados en archivos, la manera mas sencilla para obtenerlos es
+
+```{r}
+books <- read.csv('booksales.csv')
+books
+```
+ Es importante ubicar nuestro working directory pues la funcion read.csv toma el path relativo a nuestro working directory
+
+Es importante darle un vistazo a nuestros archivos antes de cargarlos, asi sabremos como cargarlos
+
+```{r}
+
+bookst <- read.csv('booksales.txt')
+bookst
+```
+Como podemos ver este archivo no es CSV es separado por tabs '\t' para ellos usamos 
+```{r}
+bookst <- read.delim('booksales.txt',sep = '\t')
+bookst
+```
+
+Lo que leimos es guardado en una estructura llamada data frame, que agrupa nuestros datos con columnas con nombres y las observaciones se agrupan por filas.
+
+Podemos resumir nuestros Data Frames, dandoles un sneak peak usando summary().
+
+```{r}
+summary(books)
+```
+
+
+Podemos acceder a los datos de las siguientes maneras:
+```{r}
+books$Days
+
+books[,1]
+
+books[,-1]
+
+books[,c(1,3)]
+
+books[books$Days  < 30 | books$Sales > 0  ,]
+
+
+```
 
 
 
