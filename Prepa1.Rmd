@@ -255,6 +255,12 @@ books[books$Days  < 30 | books$Sales > 0  ,]
 
 ```
 
+Podemos crear variables nuevas en nuestro dataframe
+```{r}
+a <- c(1:12)
+books$number <- a
+books
+```
 
 
 
